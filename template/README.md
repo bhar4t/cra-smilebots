@@ -1,70 +1,78 @@
+# Project Starter Kit v2
+# SmileBots React+Firebase Sample Codebase
 
-Trial 3 of custom cra with v3.3.0
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A complete app example showing adding/updating/removing data from Firestore
+
+## How was it Started?
+
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+
+## Folder Structure
+
+**components/** - the original directory for presentational components. Most of our presentational components still live here.
+
+**containers/** - the original directory for containers.
+
+**layouts/** - This is the only other directory that holds presentational components. These presentational components are specifically concerned with how an entire page in our application is laid out
+
+**pages/** - Pages are containers that pull in all of the presentational components and sub-containers for a particular application view. All of our pages start with a layout component and add children from there. These are what are called by the router
+
+**firebase/** - This is for all of our firebase related code.
+
+**styles/** - Self-explanatory. Basically, this is where you put the colors.js file.
+
+For the project to build, **these files must exist with exact filenames**:
+
+- `index.html` is the page template;
+- `favicon.ico` is the icon you see in the browser tab;
+- `src/index.js` is the JavaScript entry point.
+
+You can delete or rename the other files.
+
+You may create subdirectories inside `src`. For faster rebuilds, only files inside `src` are processed by Webpack.  
+You need to **put any JS and CSS files inside `src`**, or Webpack won’t see them.
+
+You can, however, create more top-level directories.  
+They will not be included in the production build so you can use them for things like documentation.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
+### `npm install`
+
 ### `npm start`
 
-Runs the app in the development mode.<br />
+Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
+The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
+Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
+The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Styling
 
-### `npm run eject`
+We are using Prettier by default. To use it in VSCode:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Install this in VSCode : https://github.com/prettier/prettier-vscode
+   ----or----
+1. Search for `Prettier Code Formatter` by Esben Petersen
+1. Go to Preferences -> Text Editor -> Formatting -> Format on Save (or any other if you prefer)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+⚠ A word of warning-if you have any other code formatting extensions installed such as for example hugely popular `Beautify` or `HookyQR.beautify` or taichi.react-beautify they might take precedence and format your code instead of Prettier leading to unexpected results. So disable them before proceeding.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Using Firebase and Auth
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+To use firebase db, use the `withFirebase` HOC which gives you two props:
+`firebase` - contains the main firebase functions
+`db` - contains reference to the firestore db
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+To get the user object, use the `withUser` HOC which gives you one prop:
+`user` - contains null if the user is logged out, else gives you the user object

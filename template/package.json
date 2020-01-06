@@ -1,0 +1,34 @@
+{
+  "name": "create-react-app",
+  "version": "3.2.2",
+  "private": true,
+  "dependencies": {
+    "firebase": "^6.0.2",
+    "material-ui": "^0.20.2",
+    "moment": "^2.24.0",
+    "react": "^16.8.6",
+    "react-big-calendar": "^0.20.4",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "3.0.1",
+    "react-svg-piechart": "^2.4.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "lint": "eslint src",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "deploy": "yarn build && rm ./build/static/js/*.map && firebase deploy",
+    "deployWindows": "yarn build && del build\\static\\js\\*.map && firebase deploy"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "prettier": "1.15.3"
+  }
+}

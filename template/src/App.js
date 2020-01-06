@@ -1,28 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import withMUI from "./hoc/withMUI";
+import withUser from "./hoc/withUser";
+import withAuthentication from "./hoc/withAuthentication";
+import NewVehicle from "./containers/NewVehicle";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello World!
-          Trial 3 with new template creator in v3.3.0 of create-react-app
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = props => (
+  <div>
+    <Router>
+      <div>
+        <Route path="/" render={props => <NewVehicle {...props} />} />
+      </div>
+      <div></div>
+    </Router>
+  </div>
+);
 
-export default App;
+export default withAuthentication(withMUI(withUser(App)));

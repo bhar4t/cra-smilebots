@@ -1,0 +1,8 @@
+{
+  "login": {
+    "welcome": "Welcome {{name}} to our localized app!",
+    "signInMessage": "Sign in to save your Settings and Likes",
+    "login_button": "Sign In",
+    "signup_button": "Sign Up"
+  }
+}
