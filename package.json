@@ -1,22 +1,22 @@
 {
-  "name": "cra-template-smilebots",
-  "version": "0.3.4",
+  "name": "cra-template-smilebots-admin",
+  "version": "0.0.24",
   "keywords": [
     "react",
     "create-react-app",
     "template",
-    "smilebots"
+    "smilebots",
+    "admin",
+    "create",
+    "react",
+    "app"
   ],
   "description": "The base template for Create React App customised for SmileBots.",
-  "author": "Harshit Agrawal",
+  "author": "Bharat Sahu",
   "main": "template.json",
-
   "license": "MIT",
   "engines": {
     "node": ">=8"
-  },
-  "bugs": {
-    "url": "https://github.com/smilebots/cra-smilebots/issues"
   },
   "files": [
     "template",

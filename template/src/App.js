@@ -1,28 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from "react-router-dom";
+import withUser from "./hoc/withUser";
+import withAuthentication from "./hoc/withAuthentication";
+import LoginContainer from "./containers/Login";
+import DashboardContainer from "./containers/Dashboard";
+import Modules from "./containers/Modules";
+import UserAndPermissions from "./containers/UserAndPermissions";
+import Loader from "./components/Loader";
 
-function App() {
+// If we won't accept anonymous user as logged in user
+const Secure = ({ component: Component, user, ...props }) => (
+  <Route
+    {...props}
+    render={props =>
+      user && !user.isAnonymous ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="/login" />
+      )
+    }
+  />
+);
+
+// Loader while login redirect
+const RouteLoader = ({ component: Component, user, ...props }) => (
+  <Route
+    {...props}
+    render={props =>
+      user ? <Redirect to="/dashboard" /> : <Component {...props} />
+    }
+  />
+);
+
+const App = ({ user }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello World!
-          Trial 3 with new template creator in v3.3.0 of create-react-app
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Secure path="/dashboard" component={DashboardContainer} user={user} />
+        <Secure path="/modules" component={Modules} user={user} />
+        <RouteLoader path="/authReloadWait" component={Loader} user={user} />
+        <Route
+          path="/userandpermmision"
+          render={props => <UserAndPermissions {...props} />}
+        />
+        <Route
+          exact
+          path="/login"
+          render={props => <LoginContainer {...props} />}
+        />
+        <Redirect from="/" to="/dashboard" />
+      </Switch>
+    </Router>
   );
-}
+};
 
-export default App;
+export default withAuthentication(withUser(App));

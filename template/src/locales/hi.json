@@ -1,0 +1,8 @@
+{
+  "login": {
+    "welcome": "नमस्कार {{name}} हमारे ऐप में!",
+    "signInMessage": "लोकस में आपका स्वागत है",
+    "login_button": "साईन-इन",
+    "signup_button": "साइन अप"
+  }
+}
