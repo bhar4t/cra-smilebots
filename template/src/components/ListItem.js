@@ -6,10 +6,12 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 
 function ListItemElement({
+  avatar,
+  color,
+  index,
+  listClickHandler,
   primary,
   secondary,
-  listClickHandler,
-  index,
   selectedIndex
 }) {
   return (
@@ -25,9 +27,14 @@ function ListItemElement({
         }}
       >
         <ListItemAvatar>
-          <Avatar alt={primary}>{primary?.substring(0, 1)}</Avatar>
+          <Avatar alt={primary} src={avatar}>
+            {primary?.substring(0, 1)}
+          </Avatar>
         </ListItemAvatar>
-        <ListItemText primary={primary} secondary={secondary} />
+        <ListItemText
+          primary={<span style={{ color: color || "black" }}>{primary}</span>}
+          secondary={secondary}
+        />
       </ListItem>
       <Divider />
     </div>

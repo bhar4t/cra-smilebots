@@ -7,7 +7,9 @@ Fully customized, adaptive screen resolution and, responsive UI template for Adm
     - Material-UI
     - Locale
 
-[Demo](https://www.youtube.com/watch?v=-m5tzni5sCM "CRA Template")
+[Demo (Video)](https://www.youtube.com/watch?v=-m5tzni5sCM "CRA Template")
+
+[Live Demo](https://sandbox-6bb70.firebaseapp.com/ "CRA Template")
 
 # Getting Started
 

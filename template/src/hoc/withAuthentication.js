@@ -28,8 +28,7 @@ const withAuthentication = Component => {
     }
 
     purgeUser = (authUser, access) => {
-      const user = authUser.providerData[0];
-      user.access = access;
+      const user = { ...authUser.providerData[0], uid: authUser.uid, access };
       this.setState({ authUser: user });
       localStorage.setItem("user", JSON.stringify(user));
     };

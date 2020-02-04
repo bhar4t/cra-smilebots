@@ -1,6 +1,6 @@
 {
   "name": "cra-template-smilebots-admin",
-  "version": "0.0.24",
+  "version": "0.0.27",
   "keywords": [
     "react",
     "create-react-app",
@@ -11,7 +11,14 @@
     "react",
     "app"
   ],
-  "description": "The base template for Create React App customised for SmileBots.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bhar4t/cra-smilebots.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bhar4t/cra-smilebots.git/issues"
+  },
+  "description": "The base template for create-react-app customised for SmileBots.",
   "author": "Bharat Sahu",
   "main": "template.json",
   "license": "MIT",

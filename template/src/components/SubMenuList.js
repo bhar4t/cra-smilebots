@@ -103,6 +103,14 @@ export default function SubMenuList(props) {
                 listClickHandler={listClickHandler}
                 primary={menu[tab.primaryField]}
                 secondary={menu[tab.secondaryField]}
+                avatar={menu[tab.avatarField]}
+                color={
+                  tab?.decorators?.colors?.[
+                    tab?.decorators?.options.findIndex(
+                      e => e === menu?.[tab?.decorators?.conditionField]
+                    )
+                  ]
+                }
               />
             ))}
           </List>

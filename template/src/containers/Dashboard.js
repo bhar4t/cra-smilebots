@@ -7,15 +7,66 @@ class DashboardContainer extends Component {
     super(props);
     this.state = {
       users: [
-        { name: "Rakesh", email: "rakesh@smilebots.com" },
-        { name: "Bharat Sahu", email: "bharat@gmail.com" },
-        { name: "Shahid", email: "shahid@smilebots.com" },
-        { name: "Mukesh", email: "mukesh@smilebots.com" },
-        { name: "Bharat", email: "bhar4t@gmail.com" },
-        { name: "Shahid Ji", email: "shahidji@smilebots.com" },
-        { name: "Lokesh", email: "lokesh@smilebots.com" },
-        { name: "Sahu", email: "sahu@gmail.com" },
-        { name: "Shahid Hussain", email: "shahidhssn@smilebots.com" }
+        {
+          name: "Rakesh",
+          email: "rakesh@smilebots.com",
+          src:
+            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-05-512.png",
+          status: "pending"
+        },
+        {
+          name: "Bharat Sahu",
+          email: "bharat@gmail.com",
+          logo:
+            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-06-512.png",
+          status: "approved"
+        },
+        {
+          name: "Shahid",
+          email: "shahid@smilebots.com",
+          src:
+            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-04-512.png",
+          status: "unidentified"
+        },
+        {
+          name: "Mukesh",
+          email: "mukesh@smilebots.com",
+          logo:
+            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-07-512.png",
+          currentStatus: "pending"
+        },
+        {
+          name: "Bharat",
+          email: "bhar4t@gmail.com",
+          src:
+            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-01-512.png",
+          currentStatus: "pending"
+        },
+        {
+          name: "Shahid Ji",
+          email: "shahidji@smilebots.com",
+          src:
+            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-02-512.png",
+          currentStatus: "authorized"
+        },
+        {
+          name: "Lokesh",
+          email: "lokesh@smilebots.com",
+          logo:
+            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-08-512.png"
+        },
+        {
+          name: "Sahu",
+          email: "sahu@gmail.com",
+          src:
+            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-03-512.png"
+        },
+        {
+          name: "Shahid Hussain",
+          email: "shahidhssn@smilebots.com",
+          logo:
+            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-09-512.png"
+        }
       ]
     };
   }

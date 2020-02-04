@@ -14,7 +14,13 @@ class Dashboard extends Component {
           data: props.users,
           route: "/dashboard/pending",
           primaryField: "name",
-          secondaryField: "email"
+          secondaryField: "email",
+          avatarField: "src",
+          decorators: {
+            conditionField: "status",
+            options: ["pending", "approved", "unidentified"],
+            colors: ["yellow", "green", "red"]
+          }
         },
         {
           label: "Approved",
@@ -22,7 +28,13 @@ class Dashboard extends Component {
           data: [props.users[1]].concat(props.users),
           route: "/dashboard/approved",
           primaryField: "name",
-          secondaryField: "email"
+          secondaryField: "email",
+          avatarField: "logo",
+          decorators: {
+            conditionField: "currentStatus",
+            options: ["pending", "authorized", "unidentified"],
+            colors: ["orange", "pink", "magenta"]
+          }
         }
       ],
       user: null,
