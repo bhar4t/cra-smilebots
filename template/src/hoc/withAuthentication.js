@@ -2,15 +2,15 @@ import React from "react";
 import withFirebase from "./withFirebase";
 
 const access = {
-  branches: false,
-  clients: false,
-  enquiriesAndQuotations: false,
-  items: false,
-  purchaseOrders: false,
-  transporters: false,
-  usersAndPermissions: false,
-  vendors: false,
-  masters: false
+  branches: true,
+  clients: true,
+  enquiriesAndQuotations: true,
+  items: true,
+  purchaseOrders: true,
+  transporters: true,
+  usersAndPermissions: true,
+  vendors: true,
+  masters: true
 };
 
 const AuthUserContext = React.createContext(null);

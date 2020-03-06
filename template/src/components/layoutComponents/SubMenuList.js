@@ -5,8 +5,8 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import List from "@material-ui/core/List";
-import ListItem from "../components/ListItem";
-import "../styles/styles.css";
+import ListItem from "./ListItem";
+import "./styles.css";
 
 const styles = {
   fab: { position: "absolute", bottom: 16, right: 16 },
@@ -55,7 +55,7 @@ export default function SubMenuList(props) {
         props.history.push(`${props?.tabs?.[tabIndex]?.route}/${index}`);
       }
     },
-    [props.searchedData]
+    [props.searchedData, tabIndex, props]
   );
   const handleTabsChange = (e, value) => {
     setTab(value);

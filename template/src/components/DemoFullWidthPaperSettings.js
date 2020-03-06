@@ -3,13 +3,12 @@ import { withRouter } from "react-router-dom";
 import Layout from "../layouts/Layout";
 import Paper from "@material-ui/core/Paper";
 
-class DemoFullWidthPaper extends Component {
+class DemoFullWidthPaperSettings extends Component {
   render() {
-    const paperStyle = { width: "100%", height: "100%", padding: "16px 0px" };
     return (
       <Layout>
-        <Paper style={paperStyle}>
-          <ul>
+        <Paper style={{ width: "100%", height: "100%", padding: "16px 0px" }}>
+          <ol>
             {this.props.users.map((e, i) => (
               <li
                 onClick={e => {
@@ -29,11 +28,11 @@ class DemoFullWidthPaper extends Component {
                 <span style={{ color: "gray", fontSize: 10 }}>{e.email}</span>
               </li>
             ))}
-          </ul>
+          </ol>
         </Paper>
       </Layout>
     );
   }
 }
 
-export default withRouter(DemoFullWidthPaper);
+export default withRouter(DemoFullWidthPaperSettings);

@@ -5,28 +5,15 @@ import Paper from "@material-ui/core/Paper";
 export default class Module extends Component {
   constructor(props) {
     super(props);
-    const users = [
-      { name: "Bharat Sahu", email: "bharat@gmail.com" },
-      { name: "Rakesh", email: "rakesh@smilebots.com" },
-      { name: "Shahid", email: "shahid@smilebots.com" },
-      { name: "Bharat Sahu", email: "bharat@gmail.com" },
-      { name: "Rakesh", email: "rakesh@smilebots.com" },
-      { name: "Shahid", email: "shahid@smilebots.com" },
-      { name: "Bharat Sahu", email: "bharat@gmail.com" },
-      { name: "Rakesh", email: "rakesh@smilebots.com" },
-      { name: "Shahid", email: "shahid@smilebots.com" },
-      { name: "Bharat Sahu", email: "bharat@gmail.com" },
-      { name: "Rakesh", email: "rakesh@smilebots.com" },
-      { name: "Shahid", email: "shahid@smilebots.com" }
-    ];
     this.state = {
-      users,
+      users: [],
       tabs: [
         {
           label: "Users",
           tooltip: "Click to approve users",
-          data: users,
+          data: [],
           route: "/modules/user",
+          avatarField: "logo",
           primaryField: "name",
           secondaryField: "email"
         }
@@ -34,8 +21,23 @@ export default class Module extends Component {
     };
   }
 
+  componentWillMount() {
+    this.setInitialValues(this.props)
+  }
+
   componentWillReceiveProps(next) {
-    if (next.match.path === "/modules/new") alert("NEW");
+    this.setInitialValues(next);
+    if (next.match.path === "/modules/new")
+      console.log("Handle New Button Events");
+  }
+
+  setInitialValues(props) {
+    const tabs = this.state.tabs.map((e, i) => {
+      const tab = e;
+      tab.data = props.users;
+      return tab;
+    });
+    this.setState({ users: props.users, tabs });
   }
 
   render() {

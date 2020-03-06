@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import SearchBar from "../components/SearchBar";
-import SubMenuList from "../components/SubMenuList";
+import SearchBar from "../components/layoutComponents/SearchBar";
+import SubMenuList from "../components/layoutComponents/SubMenuList";
 
 const styles = {
   container: isMobile => ({
@@ -50,4 +49,4 @@ function SubMenuLayout(props) {
   );
 }
 
-export default withRouter(SubMenuLayout);
+export default SubMenuLayout;

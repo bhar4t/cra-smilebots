@@ -11,7 +11,7 @@ class Dashboard extends Component {
         {
           label: "Pending",
           tooltip: "Click to approve pending users",
-          data: props.users,
+          data: [],
           route: "/dashboard/pending",
           primaryField: "name",
           secondaryField: "email",
@@ -25,7 +25,7 @@ class Dashboard extends Component {
         {
           label: "Approved",
           tooltip: "Click to approve approved users",
-          data: [props.users[1]].concat(props.users),
+          data: [],
           route: "/dashboard/approved",
           primaryField: "name",
           secondaryField: "email",
@@ -33,16 +33,21 @@ class Dashboard extends Component {
           decorators: {
             conditionField: "currentStatus",
             options: ["pending", "authorized", "unidentified"],
-            colors: ["orange", "pink", "magenta"]
+            colors: ["teal", "cyan", "magenta"]
           }
         }
       ],
       user: null,
-      users: props.users
+      users: []
     };
   }
 
+  componentWillMount() {
+    this.setInitialValues(this.props);
+  }
+
   componentWillReceiveProps(next) {
+    this.setInitialValues(next);
     if (next.match.params.hasOwnProperty("tab")) {
       let tab = next.match.params["tab"];
       if (tab === "pending" && next.match.params.hasOwnProperty("id")) {
@@ -60,6 +65,15 @@ class Dashboard extends Component {
     // if (next.match.path === "/dashboard/new") alert("NEW");
   }
 
+  setInitialValues(props) {
+    const tabs = this.state.tabs.map((e, i) => {
+      const tab = e;
+      tab.data = props.users;
+      return tab;
+    });
+    this.setState({ users: props.users, tabs });
+  }
+
   render() {
     const { tabs, users, user } = this.state;
     return (
@@ -75,7 +89,7 @@ class Dashboard extends Component {
         }}
       >
         <Paper style={{ width: "100%", height: "100%" }}>
-          {user ? (
+          {users.length > 0 && user ? (
             <div>
               You Have Selected: {user.name}, {user.email}, {user.phone}
             </div>

@@ -6,8 +6,8 @@ import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBack from "@material-ui/icons/ArrowBack";
 import MoreVert from "@material-ui/icons/MoreVert";
-import SearchBar from "../components/SearchBar";
-import SubMenuList from "../components/SubMenuList";
+import SearchBar from "../components/layoutComponents/SearchBar";
+import SubMenuList from "../components/layoutComponents/SubMenuList";
 
 const styles = {
   container: isMobile => ({

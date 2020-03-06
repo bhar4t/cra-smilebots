@@ -5,12 +5,11 @@ import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
-import LogoutIcon from "@material-ui/icons/ExitToApp";
-import Tooltip from "@material-ui/core/Tooltip";
-import DrawerContents from "../components/DrawerContents";
-import ProjectName from "../components/ProjectName";
+import DrawerContents from "../components/layoutComponents/DrawerContents";
+import ProjectName from "../components/layoutComponents/ProjectName";
+import RightIcon from "../components/layoutComponents/RightIcon";
+
 const drawerWidth = 270;
 
 const useStyles = makeStyles(theme => ({
@@ -23,20 +22,6 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     })
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  menuButton: {
-    marginRight: 36
-  },
-  hide: {
-    display: "none"
   },
   drawer: {
     width: drawerWidth,
@@ -59,43 +44,14 @@ const useStyles = makeStyles(theme => ({
     overflowX: "hidden",
     width: theme.spacing(7) + 1
   },
-  toolbar: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
+  rightIcon: {
     position: "absolute",
-    bottom: 0,
-    right: 5
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3)
-  },
-  profile: {
-    width: 50,
-    height: 50
-  },
-  listMainDiv: {
-    marginTop: 64
-  },
-  divBigAvatar: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-    padding: 10
-  },
-  selected: {
-    backgroundColor: "#eb4000"
-  },
-  active: {
-    backgroundColor: "red"
+    right: 24
   }
 }));
 
 export default function WebViewAppBar(props) {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -106,31 +62,15 @@ export default function WebViewAppBar(props) {
             alt="Project Name"
             className={classes.logoAvatar}
             onClick={e => props.setOpen(!props.open)}
-            style={{ background: "transparent", border: "1px solid white" }}
+            // style={{ background: "transparent", border: "1px solid white" }}
           >
             AS
           </Avatar>
           <ProjectName {...props} />
-          <Tooltip title="Click to Sign out" placement="bottom">
-            <LogoutIcon
-              onClick={e => {
-                e.preventDefault();
-                props.firebase.logOut(props);
-              }}
-              style={{
-                color: "antiquewhite",
-                position: "absolute",
-                right: 100
-              }}
-            />
-          </Tooltip>
-          <Typography
-            fontSize={10}
-            noWrap
-            style={{ position: "absolute", right: 10 }}
-          >
-            SIGN OUT
-          </Typography>
+
+          <div className={classes.rightIcon}>
+            <RightIcon {...props} />
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer

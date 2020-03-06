@@ -6,70 +6,30 @@ class DashboardContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [
-        {
-          name: "Rakesh",
-          email: "rakesh@smilebots.com",
-          src:
-            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-05-512.png",
-          status: "pending"
-        },
-        {
-          name: "Bharat Sahu",
-          email: "bharat@gmail.com",
-          logo:
-            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-06-512.png",
-          status: "approved"
-        },
-        {
-          name: "Shahid",
-          email: "shahid@smilebots.com",
-          src:
-            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-04-512.png",
-          status: "unidentified"
-        },
-        {
-          name: "Mukesh",
-          email: "mukesh@smilebots.com",
-          logo:
-            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-07-512.png",
-          currentStatus: "pending"
-        },
-        {
-          name: "Bharat",
-          email: "bhar4t@gmail.com",
-          src:
-            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-01-512.png",
-          currentStatus: "pending"
-        },
-        {
-          name: "Shahid Ji",
-          email: "shahidji@smilebots.com",
-          src:
-            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-02-512.png",
-          currentStatus: "authorized"
-        },
-        {
-          name: "Lokesh",
-          email: "lokesh@smilebots.com",
-          logo:
-            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-08-512.png"
-        },
-        {
-          name: "Sahu",
-          email: "sahu@gmail.com",
-          src:
-            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-03-512.png"
-        },
-        {
-          name: "Shahid Hussain",
-          email: "shahidhssn@smilebots.com",
-          logo:
-            "https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-09-512.png"
-        }
-      ]
+      users: []
     };
   }
+
+  componentWillMount() {
+    this.fetchUsers();
+  }
+
+  fetchUsers = () => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(json => {
+        const users = json.map((element, index) => {
+          const user = element;
+          user.src = `https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-${index + 10}-512.png`
+          user.logo = `https://cdn4.iconfinder.com/data/icons/user-avatar-flat-icons/512/User_Avatar-${index + 10}-512.png`
+          user.status = ['pending', 'approved', 'unidentified'][Math.floor(Math.random() * 3)];
+          user.currentStatus = ['pending', 'unidentified', 'authorized'][Math.floor(Math.random() * 3)];
+          return user;
+        });
+        this.setState({ users }, console.log(users));
+      })
+  }
+
   render() {
     return (
       <Route

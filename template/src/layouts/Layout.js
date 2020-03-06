@@ -1,11 +1,23 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import { withRouter } from "react-router-dom";
-import withUser from "../hoc/withUser";
-import withFirebase from "../hoc/withFirebase";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { createMuiTheme } from '@material-ui/core/styles';
+import purple from '@material-ui/core/colors/blue';
+import green from '@material-ui/core/colors/green';
 import WebViewAppBar from "./WebViewAppBar";
 import MobileViewAppBar from "./MobileViewAppBar";
 import SubMenuLayout from "./SubMenuLayout";
 import SwipeView from "./SwipeView";
+import { withRouter } from "react-router-dom";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: purple,
+    secondary: green,
+  },
+  status: {
+    danger: 'orange',
+  },
+});
 
 function Layout(props) {
   const [width, setWidth] = useState(window.innerWidth);
@@ -16,19 +28,21 @@ function Layout(props) {
 
   if (isMobile) {
     return (
-      <div>
+      <ThemeProvider theme={theme}>
         <MobileViewAppBar {...props} isMobile={isMobile} />
         <SwipeView {...props} isMobile={isMobile}>
           {props.children}
         </SwipeView>
-      </div>
+      </ThemeProvider>
     );
   } else {
     return (
       <div style={{ display: "flex" }}>
-        <WebViewAppBar {...props} open={open} setOpen={setOpen} />
-        {props.tabs && <SubMenuLayout setOpen={setOpen} {...props} />}
-        <div style={{ marginTop: 64, width: "100%" }}>{props.children}</div>
+        <ThemeProvider theme={theme}>
+          <WebViewAppBar {...props} open={open} setOpen={setOpen} />
+          {props.tabs && <SubMenuLayout setOpen={setOpen} {...props} />}
+          <div style={{ marginTop: 64, width: "100%" }}>{props.children}</div>
+        </ThemeProvider>
       </div>
     );
   }
@@ -57,4 +71,4 @@ function useEventListener(eventName, handler, element = window) {
   );
 }
 
-export default withUser(withFirebase(withRouter(Layout)));
+export default withRouter(Layout);
