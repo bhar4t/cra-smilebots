@@ -132,9 +132,10 @@ function DrawerContent(props) {
           {listItems.map((list, index) => {
             if (props?.user?.access?.[list.access]) {
               return (
-                <>
+                <div key={`ListItemContainer-${index}`}>
                   <ListItem
                     button
+                    key={`ListItem-${index}`}
                     selected={selectedIndex === index}
                     onClick={
                       typeof list.childRoutes === "undefined"
@@ -171,6 +172,7 @@ function DrawerContent(props) {
                         {list?.childRoutes?.map((e, i) => (
                           <ListItem
                             button
+                            key={`ListItem-${index}-${i}`}
                             className={classes.nested}
                             onClick={evt => {
                               evt.preventDefault();
@@ -185,7 +187,7 @@ function DrawerContent(props) {
                       </List>
                     </Collapse>
                   )}
-                </>
+                </div>
               );
             } else return null;
           })}

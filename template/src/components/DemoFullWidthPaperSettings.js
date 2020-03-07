@@ -11,6 +11,7 @@ class DemoFullWidthPaperSettings extends Component {
           <ol>
             {this.props.users.map((e, i) => (
               <li
+                key={`li-${i}`}
                 onClick={e => {
                   e.preventDefault();
                   this.props.history.push(`/userandpermmision/user/${i}`);

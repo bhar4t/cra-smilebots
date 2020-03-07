@@ -10,7 +10,7 @@ class DashboardContainer extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchUsers();
   }
 
@@ -26,7 +26,7 @@ class DashboardContainer extends Component {
           user.currentStatus = ['pending', 'unidentified', 'authorized'][Math.floor(Math.random() * 3)];
           return user;
         });
-        this.setState({ users }, console.log(users));
+        this.setState({ users });
       })
   }
 

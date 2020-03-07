@@ -21,11 +21,11 @@ export default class Module extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.setInitialValues(this.props)
   }
 
-  componentWillReceiveProps(next) {
+  UNSAFE_componentWillReceiveProps(next) {
     this.setInitialValues(next);
     if (next.match.path === "/modules/new")
       console.log("Handle New Button Events");

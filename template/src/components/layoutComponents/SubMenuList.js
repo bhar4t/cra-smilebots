@@ -83,8 +83,9 @@ export default function SubMenuList(props) {
           onChange={handleTabsChange}
         >
           {props?.tabs?.map((tab, index) => (
-            <Tooltip title={tab.tooltip} placement="top">
+            <Tooltip key={`${'Tooltip'}-${index}`} title={tab.tooltip} placement="top">
               <Tab
+                key={`TAB-${tab}-${index}`}
                 label={tab.label}
                 {...a11yProps(index)}
                 style={styles.tab(props.isMobile, props.tabs.length)}
@@ -94,10 +95,11 @@ export default function SubMenuList(props) {
         </Tabs>
       </Paper>
       {props?.tabs?.map((tab, i) => (
-        <TabPanel value={tabIndex} index={i}>
-          <List disablePadding>
+        <TabPanel key={`${'TabPanel'}-${i}`} value={tabIndex} index={i}>
+          <List key={`${'List'}-${i}`} disablePadding>
             {props?.tabs?.[i]?.data?.map((menu, index) => (
               <ListItem
+                key={`ListItem-${i}-${index}`}
                 selectedIndex={selectedIndex}
                 index={index}
                 listClickHandler={listClickHandler}

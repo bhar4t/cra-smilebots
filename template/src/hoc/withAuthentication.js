@@ -23,7 +23,7 @@ const withAuthentication = Component => {
       this.state = { authUser };
     }
 
-    componentWillMount() {
+    componentDidMount() {
       this.addUsers();
     }
 

@@ -3,11 +3,7 @@ import { withRouter } from "react-router-dom";
 import Layout from "../layouts/Layout";
 import Paper from "@material-ui/core/Paper";
 
-class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tabs: [
+const tabs = [
         {
           label: "Pending",
           tooltip: "Click to approve pending users",
@@ -36,17 +32,23 @@ class Dashboard extends Component {
             colors: ["teal", "cyan", "magenta"]
           }
         }
-      ],
+      ];
+      
+class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tabs,
       user: null,
       users: []
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.setInitialValues(this.props);
   }
 
-  componentWillReceiveProps(next) {
+  UNSAFE_componentWillReceiveProps(next) {
     this.setInitialValues(next);
     if (next.match.params.hasOwnProperty("tab")) {
       let tab = next.match.params["tab"];

@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/auth";
 import "firebase/functions";
@@ -9,12 +9,11 @@ class Firebase {
     this.auth = this.app.auth();
     this.db = this.app.firestore();
     this.sendInvitation = firebase.functions().httpsCallable("sendInvitation");
-    this.log = console.log;
-
+    this.log = console.error;
     this.app
       .firestore()
       .enablePersistence()
-      .then(() => this.log("Persistence working!"))
+      .then(() => {})
       .catch(this.log);
   }
   googleSignIn = props => {
@@ -22,7 +21,7 @@ class Firebase {
     this.auth
       .signInWithRedirect(provider)
       .then(() => firebase.auth().getRedirectResult())
-      .then(this.log)
+      .then(() => {})
       .catch(error => {
         props.history.push("/login");
         this.log(error);
